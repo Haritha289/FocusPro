@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Dashboard - Productivity Suite</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button class="fullscreen-btn btn" onclick="toggleFullscreen()">⛶</button>
+    
+    <div class="container">
+        <div class="header">
+            <h1 class="text-3xl font-bold text-center bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                🎯 Focus Dashboard - Your Productivity Companion
+            </h1>
+            <p class="text-center text-gray-600 mt-2">Eliminate distractions, maximize productivity, achieve your goals</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="panel time-section">
+                <h2 class="text-xl font-bold mb-4">⏰ Time Management</h2>
+                <div class="time-display" id="currentTime">--:--</div>
+                <input type="time" class="time-input" id="targetTime" placeholder="Set your target time">
+                <button class="btn mt-4" onclick="startFocusMode()">Start Focus Session</button>
+                <div class="mt-4">
+                    <label class="block mb-2">Session Duration (minutes):</label>
+                    <input type="number" class="time-input" id="sessionDuration" value="25" min="1" max="120">
+                </div>
+            </div>
+
+            <div class="panel">
+                <h2 class="text-xl font-bold mb-4">📱 Filtered WhatsApp</h2>
+                <div class="social-frame">
+                    <div class="whatsapp-chat">
+                        <div class="chat-header">
+                            📚 Study Group - Focused Mode
+                        </div>
+                        <div id="whatsappMessages">
+                            <div class="message">
+                                📖 Remember to review Chapter 5 today!
+                            </div>
+                            <div class="message">
+                                💡 Study tip: Use the Pomodoro technique for better focus
+                            </div>
+                            <div class="message">
+                                🎯 You're doing great! Keep up the momentum
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h2 class="text-xl font-bold mb-4">📺 Educational YouTube</h2>
+                <div class="social-frame">
+                    <div class="youtube-content" id="youtubeContent">
+                        <div class="video-item">
+                            <div class="video-thumbnail">▶️</div>
+                            <div>
+                                <h4 class="font-bold">Advanced Mathematics - Calculus Basics</h4>
+                                <p class="text-sm text-gray-600">MathAcademy • 45 minutes</p>
+                            </div>
+                        </div>
+                        <div class="video-item">
+                            <div class="video-thumbnail">▶️</div>
+                            <div>
+                                <h4 class="font-bold">Computer Science Fundamentals</h4>
+                                <p class="text-sm text-gray-600">TechEdu • 32 minutes</p>
+                            </div>
+                        </div>
+                        <div class="video-item">
+                            <div class="video-thumbnail">▶️</div>
+                            <div>
+                                <h4 class="font-bold">Study Techniques That Actually Work</h4>
+                                <p class="text-sm text-gray-600">StudyMaster • 28 minutes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h2 class="text-xl font-bold mb-4">📈 Productivity Stats</h2>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span>Tasks Completed Today:</span>
+                        <span class="stat-number" id="tasksCompleted">0</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span>Focus Sessions:</span>
+                        <span class="stat-number" id="focusSessions">0</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span>Productivity Score:</span>
+                        <span class="stat-number" id="productivityScore">0%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel tasks-section">
+            <h2 class="text-2xl font-bold mb-6">📝 Task Manager & Notes</h2>
+            <div class="flex gap-4 mb-4">
+                <input type="text" class="task-input flex-1" id="newTaskInput" placeholder="Add a new task or note...">
+                <button class="btn" onclick="addTask()">Add Task</button>
+            </div>
+            <div id="tasksList">
+                <!-- Tasks will be added here dynamically -->
+            </div>
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number" id="totalTasks">0</div>
+                <div class="stat-label">Total Tasks</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="completedTasks">0</div>
+                <div class="stat-label">Completed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="streakDays">1</div>
+                <div class="stat-label">Day Streak</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="focusTime">0</div>
+                <div class="stat-label">Focus Minutes</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Motivation Popup -->
+    <div class="motivation-popup" id="motivationPopup">
+        <div id="motivationText">🎉 Awesome job! You're crushing it!</div>
+        <button class="btn mt-4" onclick="hideMotivation()">Keep Going!</button>
+    </div>
+
+    <!-- Focus Mode Overlay -->
+    <div class="focus-mode" id="focusMode">
+        <div class="focus-timer" id="focusTimer">25:00</div>
+        <p class="text-xl mb-4">Focus Session Active</p>
+        <button class="btn" onclick="exitFocusMode()">Exit Focus Mode</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
